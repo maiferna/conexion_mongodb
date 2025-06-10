@@ -1,8 +1,8 @@
-
+// TODO: promesa
 const jwt = require('jsonwebtoken');
 
 const createToken = (id, role) => {
-    jwt.sign({
+    return jwt.sign({
         uid: id,
         role: role
     },

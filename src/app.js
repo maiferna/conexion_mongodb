@@ -9,6 +9,12 @@ const publicRoutes = require('./routes/public.routes');
 const adminRoutes = require('./routes/admin.routes');
 const authRoutes = require('./routes/authentication.routes');
 
+// const {
+//     publicRoutes,
+//     authRoutes,
+//     adminRoutes
+// } = require('./routes/index')
+
 const {connection} = require('./utils/dbconnect')
 
 require('dotenv').config();

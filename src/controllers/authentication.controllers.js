@@ -32,7 +32,7 @@ const login = async (req, res) => {
             })
         }
         const token = createToken(user._id, user.role);
-        return res.status(201).json({
+        return res.status(202).json({
             ok: true,
             user,
             token
