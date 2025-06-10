@@ -15,7 +15,13 @@ const User = new Schema({
         type: String,
         required: true
     },
-    //TODO: añadir role tipo String, required, default 'user' --> mirar cómo meter diferentes roles
+    role: {
+        type: String,
+        required: true,
+        default: 'user',
+        enum: ['admin', 'user']
+    }
+    // enum: Array, creates a validator that checks if the value is in the given array.
 })
 
 // Se exporta en plural, porque las colecciones tienen que estar en plural

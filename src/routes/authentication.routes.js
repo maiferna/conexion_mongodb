@@ -12,7 +12,7 @@ const {
 const router = express.Router();
 
 // ENVIAR LOGIN
-router.post('/login', /* [
+router.post('/', /* [
     check("nombre", "nombre es requerido").notEmpty().isString(),
     check("email", "nombre es requerido").notEmpty().isString(),
     check("password", "nombre es requerido").notEmpty().isString(),

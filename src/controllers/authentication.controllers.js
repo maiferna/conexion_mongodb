@@ -1,4 +1,8 @@
 
+const User = require('../models/user.model');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
 // LOGIN
 const login = (req, res) => {
     // TODO: recoger datos del body
@@ -16,16 +20,50 @@ const login = (req, res) => {
 }
 
 // REGISTRO
-const signUp = (req, res) => {
+const signUp = async (req, res) => {
     // TODO: traer datos del body (req.body)
     // comprobar si el usuario ya existe
     // si existe --> retornamos estado 403
     // si no existe --> encriptar contraseña, añadir a la bbdd (con save), crear token, retornar 200
 
-    return res.status(201).json({
-        ok: true,
-        msg: 'Entrando en registro.'
-    })
+    const {nombre, email, password} = req.body;
+    try {
+        const user = await User.findOne({email: email});
+        if (user) {
+            return res.status(403).json({
+                ok: false,
+                msg: "El usuario ya está registrado."
+            })
+        }
+
+        // encriptar contraseña
+        const salt = bcrypt.genSaltSync(10);
+        const encryptedPassword = bcrypt.hashSync(password, salt);
+        
+        // añadir a la bbdd
+        const usuario = new User({nombre, email, password: encryptedPassword});
+        const savedUser = await usuario.save();
+
+        // crear token payload, secretOrPrivateKey, [options, callback]
+        const token = jwt.sign({
+            uid: savedUser._id,
+            role: savedUser.role
+            },
+            'binf49hfifjfiuei',
+            {
+                expiresIn: '4h'
+            }
+        )
+        return res.status(201).json({
+            ok: true,
+            savedUser
+        })
+    } catch (error) {
+        return res.status(500).json({
+            ok: false,
+            msg: "Contacte con el administrador."
+        })
+    }
 }
 
 // RENEWTOKEN

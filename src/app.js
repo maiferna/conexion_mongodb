@@ -47,8 +47,8 @@ app.use(express.json());
     // ante esta url ('/api/v1'), lo gestiona este archivo ./routes/public.routes
 app.use('/api/v1', publicRoutes);
 
-app.use('/admin', adminRoutes);
-app.use('/auth', authRoutes);
+app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/auth', authRoutes);
 
 // Poner la aplicación a la escucha del puerto
 app.listen(port, () => {
