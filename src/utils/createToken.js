@@ -1,12 +1,18 @@
 
 const jwt = require('jsonwebtoken');
 
-jwt.sign({
-    uid: savedUser._id,
-    role: savedUser.role
-},
-    'binf49hfifjfiuei',
-    {
-        expiresIn: '4h'
-    }
-)
+const createToken = (id, role) => {
+    jwt.sign({
+        uid: id,
+        role: role
+    },
+        'binf49hfifjfiuei',
+        {
+            expiresIn: '4h'
+        }
+    )
+}
+
+module.exports = {
+    createToken
+}

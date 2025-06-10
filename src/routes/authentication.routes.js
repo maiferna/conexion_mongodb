@@ -12,12 +12,12 @@ const {
 const router = express.Router();
 
 // ENVIAR LOGIN
-router.post('/', /* [
+router.post('/', [
     check("nombre", "nombre es requerido").notEmpty().isString(),
     check("email", "nombre es requerido").notEmpty().isString(),
     check("password", "nombre es requerido").notEmpty().isString(),
     validateInput
-], */ login)
+], login)
 
 
 // ENVIAR LOGOUT
@@ -26,12 +26,12 @@ router.post('/', /* [
 
 
 // ENVIAR REGISTRO
-router.post('/signup', /* [
+router.post('/signup', [
     check("nombre", "nombre es requerido").notEmpty().isString(),
     check("email", "nombre es requerido").notEmpty().isString(),
     check("password", "nombre es requerido").notEmpty().isString(),
     validateInput
-], */ signUp)
+], signUp)
 
 
 // RENEWTOKEN

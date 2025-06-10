@@ -37,12 +37,6 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 // RUTAS
-    // No vamos a tener todas las rutas aquí, las tendremos en la carpeta rutas
-    // get toma como argumentos la ruta y la función controladora
-// app.get('/', (req, res) => {
-//     res.send('<h1>Hola Mundo</h1>');
-// }) 
-
 // para hacer uso de ella necesitaremos el middleware use. Llamamos al archivo en routes
     // ante esta url ('/api/v1'), lo gestiona este archivo ./routes/public.routes
 app.use('/api/v1', publicRoutes);
