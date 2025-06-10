@@ -5,7 +5,10 @@ const isAdmin = (req, res, next) => {
     if (req.body.isAdmin) {
         next();
     } else {
-        res.status(403).send(`No esta autorizado para acceder al administrador.`)
+        res.status(403).json({
+            ok: false,
+            msg: 'No esta autorizado para acceder al administrador.'
+        })
     }
 }
 

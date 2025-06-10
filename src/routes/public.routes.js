@@ -17,18 +17,6 @@ const {
     deleteProduct
 } = require('../controllers/public.controllers')
 
-// Como ya no vamos a trabajar las rutas desde app.js, tenemos que poner a la escucha router
-// router.get('/', (req, res) => {
-//     res.send('<h1>Hola Index</h1>');
-// })
-
-// router.get('/servicios', (req, res) => {
-//     res.send('<h1>Hola Servicios</h1>');
-// })
-
-// Vamos a crear la API para productos
-// Cambiamos send por json
-// Nos llevamos la función controladora a la carpeta controllers y desde aquí llamamos a cada función
 
 // GET ALL PRODUCTS
 // GET: http://localhost:3000/api/v1/productos

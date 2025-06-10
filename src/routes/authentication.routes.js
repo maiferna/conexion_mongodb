@@ -1,11 +1,10 @@
 
 const express = require('express');
-const {check} = require('express-validator');
-const {validateInput} = require('../middlewares/validateInputs');
+const { check } = require('express-validator');
+const { validateInput } = require('../middlewares/validateInputs');
 
 const {
-    login, 
-    logout,
+    login,
     signUp,
     renewToken
 } = require('../controllers/authentication.controllers');
@@ -16,24 +15,28 @@ const router = express.Router();
 router.post('/login', /* [
     check("nombre", "nombre es requerido").notEmpty().isString(),
     check("email", "nombre es requerido").notEmpty().isString(),
-    check("password", "nombre es requerido").notEmpty().isString()
+    check("password", "nombre es requerido").notEmpty().isString(),
+    validateInput
 ], */ login)
 
 
 // ENVIAR LOGOUT
-router.post('/logout', logout)
+// Eliminar token, se gestiona en el front
+
 
 
 // ENVIAR REGISTRO
 router.post('/signup', /* [
     check("nombre", "nombre es requerido").notEmpty().isString(),
     check("email", "nombre es requerido").notEmpty().isString(),
-    check("password", "nombre es requerido").notEmpty().isString()
+    check("password", "nombre es requerido").notEmpty().isString(),
+    validateInput
 ], */ signUp)
 
 
 // RENEWTOKEN
-router.get('/renew', renewToken)
+// Valida que el token existe y si lo hace, saca otro token
+router.get('/renew',/* [validartoken, verificarrole] */ renewToken)
 
 
 module.exports = router;
