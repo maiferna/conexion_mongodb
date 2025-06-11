@@ -2,12 +2,14 @@
 const express = require('express');
 const { check } = require('express-validator');
 const { validateInput } = require('../middlewares/validateInputs');
+const { verifyToken } = require('../middlewares/verifyToken');
 
 const {
     login,
     signUp,
     renewToken
 } = require('../controllers/authentication.controllers');
+
 
 const router = express.Router();
 
@@ -36,7 +38,7 @@ router.post('/signup', [
 
 // RENEWTOKEN
 // Valida que el token existe y si lo hace, saca otro token
-router.get('/renew',/* [validartoken, verificarrole] */ renewToken)
+router.get('/renew', verifyToken, /*verificarrole] */ renewToken)
 
 
 module.exports = router;

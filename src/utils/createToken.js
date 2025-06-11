@@ -6,9 +6,9 @@ const createToken = (id, role) => {
         uid: id,
         role: role
     },
-        'binf49hfifjfiuei',
+        process.env.JWT_SECRET_KEY,
         {
-            expiresIn: '4h'
+            expiresIn: '2h'
         }
     )
 }

@@ -93,11 +93,15 @@ const renewToken = async (req, res) => {
     // si no lo hay --> retornar 403
     // si lo hay --> generar otro token
     
+    const uid = req.uid;
+    const role = req.role;
 
-    // return res.status(200).json({
-    //     ok: true,
-    //     msg: 'Entrando en renewtoken.'
-    // })
+    const newToken = createToken(uid, role);
+
+    return res.status(201).json({
+        ok: true,
+        newToken
+    })
 }
 
 module.exports = {
